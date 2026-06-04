@@ -1,0 +1,87 @@
+aid: imperial-college-london
+name: Imperial College London
+description: >-
+  Imperial College London is a UK public research university (QS World 2025
+  #2) specializing in science, engineering, medicine, and business. Its public
+  developer footprint is infrastructure-oriented rather than a published API
+  program: the institution operates a large GitHub organization for staff and
+  student code, the Spiral open-access research repository (DSpace-CRIS), an Ex
+  Libris Primo/Alma library discovery system, and Shibboleth/SAML federated
+  identity. Imperial does not publish a first-party, self-service developer
+  portal with open REST endpoints; most machine-accessible interfaces are
+  protocol-standard (OAI-PMH, SAML), vendor-hosted, or require institutional
+  authentication.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/imperial-college-london/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - United Kingdom
+  - Open Access
+  - Repository
+  - Identity
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: imperial-college-london:spiral
+    name: Spiral Open Access Repository
+    description: >-
+      Spiral is Imperial College London's open-access institutional
+      repository, holding 90,000+ research outputs on the DSpace-CRIS
+      platform. As a DSpace deployment it exposes standard OAI-PMH metadata
+      harvesting and a DSpace REST API. Endpoint paths follow DSpace
+      conventions; large-scale harvesting may be rate-limited.
+    humanURL: https://spiral.imperial.ac.uk/
+    tags:
+      - Repository
+      - Open Access
+      - DSpace
+      - OAI-PMH
+      - Research Data
+    properties:
+      - type: Documentation
+        url: https://www.re3data.org/repository/r3d100012406
+      - type: Website
+        url: https://spiral.imperial.ac.uk/
+  - aid: imperial-college-london:shibboleth
+    name: Imperial Shibboleth Identity Provider (SAML 2.0)
+    description: >-
+      Imperial's SAML 2.0 federated identity provider participates in the UK
+      Access Management Federation. It is a standards-based single sign-on
+      integration interface rather than a REST API; access requires federation
+      membership.
+    humanURL: https://www.imperial.ac.uk/admin-services/ict/
+    tags:
+      - Identity
+      - SSO
+      - SAML
+      - Shibboleth
+    properties:
+      - type: Documentation
+        url: https://www.ukfederation.org.uk/
+common:
+  - type: Website
+    url: https://www.imperial.ac.uk/
+  - type: GitHub
+    url: https://github.com/ImperialCollegeLondon
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/imperial-college-london/
+  - type: Twitter
+    url: https://twitter.com/imperialcollege
+  - type: Plans
+    url: plans/imperial-college-london-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/imperial-college-london-rate-limits.yml
+  - type: FinOps
+    url: finops/imperial-college-london-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

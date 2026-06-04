@@ -1,0 +1,35 @@
+name: Imperial College London
+description: Imperial College London public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/imperial-college-london/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      Imperial College London has machine-accessible interfaces but no first-party,
+      self-service, documented developer/API portal. The verified public footprint is
+      its GitHub organization (github.com/ImperialCollegeLondon, HTTP 200, ~748 repos),
+      the Spiral open-access repository (DSpace-CRIS), an Ex Libris Primo/Alma library
+      discovery system (vendor-gated), and a Shibboleth/SAML identity provider in the UK
+      Access Management Federation. No developer.imperial.ac.uk or data.* open-data
+      portal was found. Spiral's OAI-PMH/REST endpoints are DSpace platform-standard but
+      were not independently confirmed live this session (the OAI probe returned HTTP
+      429, rate-limited). Cataloged conservatively; re-evaluate if Imperial publishes a
+      first-party API program.
+    endpoints:
+      - url: https://github.com/ImperialCollegeLondon
+        status: 200
+        note: Verified — main code organization, ~748 repos.
+      - url: https://imperialcollegelondon.github.io/
+        status: 200
+        note: GitHub-usage docs, not an API portal.
+      - url: https://spiral.imperial.ac.uk/
+        status: 200
+        note: Open-access repository (DSpace-CRIS); 90,000+ outputs.
+      - url: https://spiral.imperial.ac.uk/oai/request
+        status: 429
+        note: OAI-PMH endpoint rate-limited during probe; path is DSpace-standard, not independently confirmed.
+      - url: https://library-search.imperial.ac.uk/discovery/search
+        status: 200
+        note: Ex Libris Primo discovery (JS app); APIs vendor-gated, not Imperial-published.
