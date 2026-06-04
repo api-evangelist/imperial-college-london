@@ -49,6 +49,20 @@ apis:
         url: https://www.re3data.org/repository/r3d100012406
       - type: Website
         url: https://spiral.imperial.ac.uk/
+      - type: OpenAPI
+        url: openapi/imperial-college-london-spiral.yaml
+      - type: x-json-schema
+        url: json-schema/imperial-college-london-item-schema.json
+      - type: x-json-structure
+        url: json-structure/imperial-college-london-item-structure.json
+      - type: x-examples
+        url: examples/imperial-college-london-searchObjects-example.json
+      - type: x-spectral-rules
+        url: rules/imperial-college-london-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/imperial-college-london-vocabulary.yml
+      - type: x-json-ld-context
+        url: json-ld/imperial-college-london-context.jsonld
   - aid: imperial-college-london:shibboleth
     name: Imperial Shibboleth Identity Provider (SAML 2.0)
     description: >-

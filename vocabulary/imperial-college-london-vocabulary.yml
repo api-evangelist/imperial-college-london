@@ -1,0 +1,59 @@
+vocabulary:
+  name: Imperial College London Spiral DSpace Vocabulary
+  description: >-
+    Controlled vocabulary for the concepts exposed by Imperial College London's
+    Spiral open-access repository via the DSpace 7.6.1 REST API. Terms reflect
+    the live HAL+JSON contract observed at
+    https://spiral.imperial.ac.uk/server/api .
+  version: "7.6.1"
+  terms:
+    - term: Community
+      definition: >-
+        A top-level or nested organisational grouping in DSpace (e.g. a faculty
+        or department) that contains sub-communities and collections.
+      tags: [core, structure, dspace]
+    - term: Collection
+      definition: >-
+        A grouping of items within a community; the container into which
+        research outputs are deposited.
+      tags: [core, structure, dspace]
+    - term: Item
+      definition: >-
+        A single deposited research output (article, thesis, dataset record)
+        with Dublin Core metadata and one or more bitstreams.
+      tags: [core, content, dspace]
+    - term: Bitstream
+      definition: >-
+        A binary file (e.g. PDF) attached to an item via a bundle.
+      tags: [core, content, dspace]
+    - term: Handle
+      definition: >-
+        A persistent identifier for a DSpace object, e.g. 10044/1/118549,
+        resolvable under the 10044 prefix.
+      tags: [identifier, persistent]
+    - term: Metadata
+      definition: >-
+        A map of qualified Dublin Core field keys (e.g. dc.title,
+        dc.contributor.author) to arrays of metadata value objects.
+      tags: [metadata, dublin-core]
+    - term: MetadataValue
+      definition: >-
+        A single metadata entry carrying value, language, authority, confidence,
+        and place (ordering) attributes.
+      tags: [metadata, dublin-core]
+    - term: Discover
+      definition: >-
+        The search and browse subsystem exposing /discover/search/objects for
+        full-text and faceted queries over indexed objects.
+      tags: [search, discovery]
+    - term: DSpaceObject
+      definition: >-
+        The common base of communities, collections, and items, identified by a
+        UUID and carrying metadata and HAL _links.
+      tags: [core, model, dspace]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting, the
+        standards-based metadata harvesting interface offered alongside the REST
+        API.
+      tags: [harvesting, standard, interoperability]

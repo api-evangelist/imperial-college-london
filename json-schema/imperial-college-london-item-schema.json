@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/imperial-college-london/main/json-schema/imperial-college-london-item-schema.json",
+  "title": "Spiral DSpace Item",
+  "description": "A deposited research output (item) in Imperial College London's Spiral repository, as returned by the DSpace 7.6.1 REST API at /server/api/core/items/{uuid}. HAL+JSON.",
+  "type": "object",
+  "required": ["uuid", "type", "metadata"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": "string", "examples": ["10044/1/118549"] },
+    "inArchive": { "type": "boolean" },
+    "discoverable": { "type": "boolean" },
+    "withdrawn": { "type": "boolean" },
+    "lastModified": { "type": "string", "format": "date-time" },
+    "entityType": { "type": ["string", "null"] },
+    "type": { "type": "string", "const": "item" },
+    "metadata": {
+      "type": "object",
+      "description": "Map of metadata field keys to arrays of metadata values.",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/metadataValue" }
+      }
+    },
+    "_links": { "type": "object" }
+  },
+  "$defs": {
+    "metadataValue": {
+      "type": "object",
+      "required": ["value"],
+      "properties": {
+        "value": { "type": "string" },
+        "language": { "type": ["string", "null"] },
+        "authority": { "type": ["string", "null"] },
+        "confidence": { "type": "integer" },
+        "place": { "type": "integer" }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+formats:
+  - oas3
+rules:
+  spiral-info-version-present:
+    description: API info must declare a version (DSpace release).
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+  spiral-server-uses-server-api-base:
+    description: Servers should use the DSpace /server/api base path.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "/server/api$"
+  spiral-operations-have-operationid:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  spiral-uuid-path-params-are-uuid-format:
+    description: Path parameters named uuid must declare format uuid.
+    severity: warn
+    given: $.paths[*][*].parameters[?(@.in=='path' && @.name=='uuid')].schema
+    then:
+      field: format
+      function: pattern
+      functionOptions:
+        match: "^uuid$"
+  spiral-responses-are-hal-json:
+    description: 200 responses should be served as application/hal+json (DSpace HAL).
+    severity: info
+    given: $.paths[*][get].responses.200.content
+    then:
+      field: "application/hal+json"
+      function: truthy
+  spiral-metadata-value-shape:
+    description: A metadataValue object must always carry a value field.
+    severity: error
+    given: $.components.schemas.MetadataValue
+    then:
+      field: required
+      function: truthy

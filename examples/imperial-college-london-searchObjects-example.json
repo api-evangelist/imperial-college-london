@@ -1,0 +1,53 @@
+{
+  "id": null,
+  "scope": null,
+  "query": null,
+  "appliedFilters": null,
+  "sort": null,
+  "configuration": null,
+  "type": "discover",
+  "_links": {
+    "self": { "href": "https://spiral.imperial.ac.uk/server/api/discover/search/objects?dsoType=item" }
+  },
+  "_embedded": {
+    "searchResult": {
+      "_links": {
+        "next": { "href": "https://spiral.imperial.ac.uk/server/api/discover/search/objects?dsoType=item&page=1&size=1" },
+        "last": { "href": "https://spiral.imperial.ac.uk/server/api/discover/search/objects?dsoType=item&page=121438&size=1" },
+        "self": { "href": "https://spiral.imperial.ac.uk/server/api/discover/search/objects?dsoType=item&size=1" }
+      },
+      "_embedded": {
+        "objects": [
+          {
+            "hitHighlights": null,
+            "type": "discover",
+            "_links": {
+              "indexableObject": { "href": "https://spiral.imperial.ac.uk/server/api/core/items/f2828931-da73-489c-b2be-c3c0f8f0fda6" }
+            },
+            "_embedded": {
+              "indexableObject": {
+                "id": "f2828931-da73-489c-b2be-c3c0f8f0fda6",
+                "uuid": "f2828931-da73-489c-b2be-c3c0f8f0fda6",
+                "name": "Impacts of daily household activities on indoor particulate and NO2 concentrations; a case study from oxford UK",
+                "handle": "10044/1/118549",
+                "metadata": {
+                  "dc.contributor.author": [
+                    { "value": "Singh, Ajit", "language": null, "authority": null, "confidence": 0, "place": 0 },
+                    { "value": "Bartington, Suzanne E", "language": null, "authority": null, "confidence": 0, "place": 1 }
+                  ],
+                  "dc.coverage.spatial": [
+                    { "value": "England", "language": null, "authority": null, "confidence": -1, "place": 0 }
+                  ],
+                  "dc.title": [
+                    { "value": "Impacts of daily household activities on indoor particulate and NO2 concentrations; a case study from oxford UK", "language": null, "authority": null, "confidence": -1, "place": 0 }
+                  ]
+                },
+                "type": "item"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

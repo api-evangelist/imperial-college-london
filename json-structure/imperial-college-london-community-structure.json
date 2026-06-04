@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/imperial-college-london/main/json-structure/imperial-college-london-community-structure.json",
+  "name": "SpiralCommunity",
+  "description": "JSON Structure for a Spiral (DSpace 7.6.1) repository community.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string" },
+    "name": { "type": "string" },
+    "handle": { "type": "string" },
+    "archivedItemsCount": { "type": "int32" },
+    "type": { "type": "string" },
+    "metadata": {
+      "type": "map",
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "name": "MetadataValue",
+          "properties": {
+            "value": { "type": "string" },
+            "language": { "type": ["string", "null"] },
+            "authority": { "type": ["string", "null"] },
+            "confidence": { "type": "int32" },
+            "place": { "type": "int32" }
+          },
+          "required": ["value"]
+        }
+      }
+    }
+  },
+  "required": ["uuid", "type", "metadata"]
+}

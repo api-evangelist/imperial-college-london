@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/imperial-college-london/main/json-schema/imperial-college-london-community-schema.json",
+  "title": "Spiral DSpace Community",
+  "description": "A community (organisational grouping) in the Spiral repository, as returned by the DSpace 7.6.1 REST API at /server/api/core/communities. HAL+JSON.",
+  "type": "object",
+  "required": ["uuid", "type", "metadata"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": "string", "examples": ["10044/1/489"] },
+    "archivedItemsCount": { "type": "integer" },
+    "type": { "type": "string", "const": "community" },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["value"],
+          "properties": {
+            "value": { "type": "string" },
+            "language": { "type": ["string", "null"] },
+            "authority": { "type": ["string", "null"] },
+            "confidence": { "type": "integer" },
+            "place": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "_links": { "type": "object" }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "spiral": "https://spiral.imperial.ac.uk/server/api/",
+    "@vocab": "https://spiral.imperial.ac.uk/ns/",
+
+    "Organization": "schema:CollegeOrUniversity",
+    "name": "schema:name",
+    "url": "schema:url",
+
+    "Community": "spiral:core/communities",
+    "Collection": "spiral:core/collections",
+    "Item": "schema:CreativeWork",
+
+    "uuid": "schema:identifier",
+    "handle": "dcterms:identifier",
+    "title": "dcterms:title",
+    "author": "dcterms:creator",
+    "abstract": "dcterms:abstract",
+    "spatial": "dcterms:spatial",
+    "lastModified": "dcterms:modified",
+    "metadata": "@nest",
+
+    "dc.title": "dcterms:title",
+    "dc.contributor.author": "dcterms:creator",
+    "dc.description.abstract": "dcterms:abstract",
+    "dc.identifier.uri": "dcterms:identifier",
+    "dc.coverage.spatial": "dcterms:spatial",
+    "dc.date.accessioned": "dcterms:dateAccepted"
+  },
+  "@type": "Organization",
+  "name": "Imperial College London",
+  "url": "https://www.imperial.ac.uk/"
+}
