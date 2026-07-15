@@ -80,6 +80,8 @@ apis:
       - type: Documentation
         url: https://www.ukfederation.org.uk/
 common:
+  - type: AgenticAccess
+    url: agentic-access/imperial-college-london-agentic-access.yml
   - type: DomainSecurity
     url: security/imperial-college-london-domain-security.yml
   - type: Website
