@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Spiral Open Access Repository (DSpace 7 REST API) Core Root API
+  description: 'OpenAPI description of the read-oriented, publicly accessible subset of the DSpace 7.6.1 REST API powering Imperial College London''s Spiral open-access repository. The live API root reports `dspaceVersion: DSpace 7.6.1` and `crisVersion: cris-2023.02.05`. Responses are HAL+JSON (application/hal+json). DSpace does not ship a vendor OpenAPI document; this description was authored from the live HAL contract and real responses observed at https://spiral.imperial.ac.uk/server/api . Only anonymous, read-only endpoints verified against the running instance are included; write, workflow, and authenticated administration endpoints are omitted.'
+  version: 7.6.1
+  contact:
+    name: Imperial College London - Spiral
+    url: https://spiral.imperial.ac.uk/
+  license:
+    name: DSpace BSD License
+    url: https://github.com/DSpace/DSpace/blob/main/LICENSE
+servers:
+- url: https://spiral.imperial.ac.uk/server/api
+  description: Spiral DSpace 7 REST API (production)
+tags:
+- name: Root
+  description: API entry point and link index.
+paths:
+  /:
+    get:
+      tags:
+      - Root
+      summary: API root
+      description: Returns the HAL root document listing the DSpace version and the navigable `_links` to every API endpoint.
+      operationId: getRoot
+      responses:
+        '200':
+          description: Root document.
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Root'
+components:
+  schemas:
+    Root:
+      type: object
+      properties:
+        dspaceUI:
+          type: string
+          format: uri
+        dspaceName:
+          type: string
+        dspaceServer:
+          type: string
+          format: uri
+        dspaceVersion:
+          type: string
+          example: DSpace 7.6.1
+        crisVersion:
+          type: string
+          example: cris-2023.02.05
+        type:
+          type: string
+          example: root
+        _links:
+          type: object
