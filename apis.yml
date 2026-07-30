@@ -12,9 +12,21 @@ description: >-
   protocol-standard (OAI-PMH, SAML), vendor-hosted, or require institutional
   authentication.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/imperial-college-london.png
 url: https://raw.githubusercontent.com/api-evangelist/imperial-college-london/refs/heads/main/apis.yml
 tags:
   - Education
@@ -29,56 +41,96 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: imperial-college-london:spiral
-    name: Spiral Open Access Repository
-    description: >-
-      Spiral is Imperial College London's open-access institutional
-      repository, holding 90,000+ research outputs on the DSpace-CRIS
-      platform. As a DSpace deployment it exposes standard OAI-PMH metadata
-      harvesting and a DSpace REST API. Endpoint paths follow DSpace
-      conventions; large-scale harvesting may be rate-limited.
-    humanURL: https://spiral.imperial.ac.uk/
-    tags:
-      - Repository
-      - Open Access
-      - DSpace
-      - OAI-PMH
-      - Research Data
-    properties:
-      - type: Documentation
-        url: https://www.re3data.org/repository/r3d100012406
-      - type: Website
-        url: https://spiral.imperial.ac.uk/
-      - type: OpenAPI
-        url: openapi/imperial-college-london-spiral.yaml
-      - type: x-json-schema
-        url: json-schema/imperial-college-london-item-schema.json
-      - type: x-json-structure
-        url: json-structure/imperial-college-london-item-structure.json
-      - type: x-examples
-        url: examples/imperial-college-london-searchObjects-example.json
-      - type: x-spectral-rules
-        url: rules/imperial-college-london-rules.yml
-      - type: x-vocabulary
-        url: vocabulary/imperial-college-london-vocabulary.yml
-      - type: x-json-ld-context
-        url: json-ld/imperial-college-london-context.jsonld
-  - aid: imperial-college-london:shibboleth
-    name: Imperial Shibboleth Identity Provider (SAML 2.0)
-    description: >-
-      Imperial's SAML 2.0 federated identity provider participates in the UK
-      Access Management Federation. It is a standards-based single sign-on
-      integration interface rather than a REST API; access requires federation
-      membership.
-    humanURL: https://www.imperial.ac.uk/admin-services/ict/
-    tags:
-      - Identity
-      - SSO
-      - SAML
-      - Shibboleth
-    properties:
-      - type: Documentation
-        url: https://www.ukfederation.org.uk/
+- aid: imperial-college-london:shibboleth
+  name: Imperial Shibboleth Identity Provider (SAML 2.0)
+  description: >-
+    Imperial's SAML 2.0 federated identity provider participates in the UK Access Management Federation.
+    It is a standards-based single sign-on integration interface rather than a REST API; access requires
+    federation membership.
+  humanURL: https://www.imperial.ac.uk/admin-services/ict/
+  tags:
+  - Identity
+  - SSO
+  - SAML
+  - Shibboleth
+  properties:
+  - type: Documentation
+    url: https://www.ukfederation.org.uk/
+- aid: imperial-college-london:imperial-college-london-core-api
+  name: Imperial College London Core API
+  description: Communities, collections, and items.
+  humanURL: https://spiral.imperial.ac.uk/
+  tags:
+  - Core
+  properties:
+  - type: OpenAPI
+    url: openapi/imperial-college-london-core-api-openapi.yml
+  - type: Documentation
+    url: https://www.re3data.org/repository/r3d100012406
+  - type: Website
+    url: https://spiral.imperial.ac.uk/
+  - type: x-json-schema
+    url: json-schema/imperial-college-london-item-schema.json
+  - type: x-json-structure
+    url: json-structure/imperial-college-london-item-structure.json
+  - type: x-examples
+    url: examples/imperial-college-london-searchObjects-example.json
+  - type: x-spectral-rules
+    url: rules/imperial-college-london-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/imperial-college-london-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/imperial-college-london-context.jsonld
+- aid: imperial-college-london:imperial-college-london-discover-api
+  name: Imperial College London Discover API
+  description: Search and browse over indexed objects.
+  humanURL: https://spiral.imperial.ac.uk/
+  tags:
+  - Discover
+  properties:
+  - type: OpenAPI
+    url: openapi/imperial-college-london-discover-api-openapi.yml
+  - type: Documentation
+    url: https://www.re3data.org/repository/r3d100012406
+  - type: Website
+    url: https://spiral.imperial.ac.uk/
+  - type: x-json-schema
+    url: json-schema/imperial-college-london-item-schema.json
+  - type: x-json-structure
+    url: json-structure/imperial-college-london-item-structure.json
+  - type: x-examples
+    url: examples/imperial-college-london-searchObjects-example.json
+  - type: x-spectral-rules
+    url: rules/imperial-college-london-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/imperial-college-london-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/imperial-college-london-context.jsonld
+- aid: imperial-college-london:imperial-college-london-root-api
+  name: Imperial College London Root API
+  description: API entry point and link index.
+  humanURL: https://spiral.imperial.ac.uk/
+  tags:
+  - Root
+  properties:
+  - type: OpenAPI
+    url: openapi/imperial-college-london-root-api-openapi.yml
+  - type: Documentation
+    url: https://www.re3data.org/repository/r3d100012406
+  - type: Website
+    url: https://spiral.imperial.ac.uk/
+  - type: x-json-schema
+    url: json-schema/imperial-college-london-item-schema.json
+  - type: x-json-structure
+    url: json-structure/imperial-college-london-item-structure.json
+  - type: x-examples
+    url: examples/imperial-college-london-searchObjects-example.json
+  - type: x-spectral-rules
+    url: rules/imperial-college-london-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/imperial-college-london-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/imperial-college-london-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/imperial-college-london-agentic-access.yml
