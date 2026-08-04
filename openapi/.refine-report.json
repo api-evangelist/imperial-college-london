@@ -1,0 +1,18 @@
+{
+  "provider": "imperial-college-london",
+  "sources": [
+    "imperial-college-london-core-api-openapi.yml",
+    "imperial-college-london-discover-api-openapi.yml",
+    "imperial-college-london-root-api-openapi.yml"
+  ],
+  "outputs": [
+    "imperial-college-london-core-api-openapi.yml",
+    "imperial-college-london-discover-api-openapi.yml",
+    "imperial-college-london-root-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
