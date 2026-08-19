@@ -1,16 +1,24 @@
 aid: imperial-college-london
 name: Imperial College London
+x-type: university
+x-category: Public Research University
 description: >-
-  Imperial College London is a UK public research university (QS World 2025
-  #2) specializing in science, engineering, medicine, and business. Its public
-  developer footprint is infrastructure-oriented rather than a published API
-  program: the institution operates a large GitHub organization for staff and
-  student code, the Spiral open-access research repository (DSpace-CRIS), an Ex
-  Libris Primo/Alma library discovery system, and Shibboleth/SAML federated
-  identity. Imperial does not publish a first-party, self-service developer
-  portal with open REST endpoints; most machine-accessible interfaces are
-  protocol-standard (OAI-PMH, SAML), vendor-hosted, or require institutional
-  authentication.
+  Imperial College London is a UK public research university and Russell Group member
+  specialising in science, engineering, medicine and business. Re-profiled 2026-08-19 under the
+  API Evangelist university pipeline, which settles WHO OPERATES each surface before crediting
+  it. The finding is that Imperial operates no public developer portal, no open data portal
+  (data.imperial.ac.uk does not resolve) and no self-service API programme — and that almost
+  every machine-readable surface running under an imperial.ac.uk hostname is a vendor tenancy:
+  Spiral, the open-access repository, is DSpace-CRIS hosted by 4Science; library-search is Ex
+  Libris Primo; profiles is Symplectic Elements; canvas and bb are Instructure Canvas and
+  Blackboard Learn; servicemgt is ServiceNow. Imperial's data, DOIs, Handle prefix (10044) and
+  administrative contacts sit behind all of them, but the contracts do not belong to Imperial.
+  Exactly two machine-readable surfaces are Imperial-operated: the Shibboleth SAML 2.0 identity
+  provider at shibboleth.imperial.ac.uk, registered in the UK Access Management Federation, and
+  an llms.txt agent-guidance file the institution authored and maintains. A third, an Azure-hosted
+  JSON gateway at api.imperial.ac.uk, answers with structured JSON but publishes no documented
+  or discoverable operation. The programmable footprint is genuinely thin, and it is thin in the
+  way universities are thin — a federation of buyers, not a producer.
 type: Index
 accessModel:
   pricing: free
@@ -29,90 +37,157 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/imperial-college-london.png
 url: https://raw.githubusercontent.com/api-evangelist/imperial-college-london/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
   - University
-  - Research
+  - Higher Education
+  - Education
+  - Russell Group
   - United Kingdom
+  - London
+  - Research
+  - Institutional Repository
   - Open Access
-  - Repository
-  - Identity
+  - Identity Federation
+  - Learning Management
+  - Library
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 specificationVersion: '0.23'
+x-coverage:
+  state: gated
+  reason: >-
+    Imperial publishes no developer portal, no API catalogue and no OpenAPI of its own. Every
+    callable surface found under imperial.ac.uk is either vendor software running under an
+    Imperial hostname, or an institution-operated endpoint whose useful operations require
+    federated authentication. Nothing was blocked to us — 27 hosts and paths were probed
+    successfully and the thinness is the institution's, not a fetch failure.
+  detail: >-
+    Verified institution-operated and machine-readable: the Shibboleth IdP metadata document
+    (200, 12,549 bytes of SAML 2.0 EntityDescriptor, entityID
+    https://shibboleth.imperial.ac.uk/shibboleth, present in the UK Access Management Federation
+    aggregate alongside 11,112 other entities) and www.imperial.ac.uk/llms.txt (200, 5,803 bytes,
+    self-dated 2026-06-23, with per-section crawl priorities and attribution rules).
+    Verified live but tenant-operated: the Spiral DSpace 7.6.1 REST API and its OAI-PMH endpoint
+    (11 metadata prefixes, OpenAIRE CERIF 1.1), the Canvas LTI 1.3 JWKS and OIDC discovery
+    documents, and the Blackboard Learn public REST version endpoint. Institution-operated but
+    gated: api.imperial.ac.uk resolves to 20.77.142.125 (Azure) and answers every path — /, /v1,
+    /docs, /openapi.json, /swagger.json, /health, /.well-known/openapi.json — with
+    `{"statusCode":404,"message":"Resource not found"}` as application/json. That is a live API
+    gateway with no published surface, not a dead host. Confirmed dead or absent, and removed
+    from or never added to this profile: data.imperial.ac.uk, developer.imperial.ac.uk and
+    openaccess.imperial.ac.uk (no DNS); www.imperial.ac.uk/business-school/icbs-apis/ (403 that
+    renders a "Page not found" body — soft-404, and robots.txt disallows it);
+    profiles.imperial.ac.uk (200 but the identical 4,151-byte SPA shell at /, /api and
+    /server/api — soft-200, no API); /.well-known/security.txt and /news/rss/ (404 HTML).
+  evidence:
+  - url: https://shibboleth.imperial.ac.uk/idp/shibboleth
+    status: 200
+  - url: http://metadata.ukfederation.org.uk/ukfederation-metadata.xml
+    status: 200
+  - url: https://www.imperial.ac.uk/llms.txt
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/api
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/oai/request?verb=Identify
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/oai/request?verb=ListMetadataFormats
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/api/core/communities
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/api/discover/search/objects?query=climate
+    status: 200
+  - url: https://spiral.imperial.ac.uk/server/api/core/items
+    status: 401
+  - url: https://canvas.imperial.ac.uk/api/lti/security/jwks
+    status: 200
+  - url: https://canvas.imperial.ac.uk/.well-known/openid-configuration
+    status: 200
+  - url: https://canvas.imperial.ac.uk/api/v1/accounts/self
+    status: 401
+  - url: https://bb.imperial.ac.uk/learn/api/public/v1/system/version
+    status: 200
+  - url: https://bb.imperial.ac.uk/learn/api/public/v1/courses
+    status: 401
+  - url: https://api.datacite.org/providers/urks
+    status: 200
+  - url: https://api.imperial.ac.uk/
+    status: 404
+  - url: https://api.imperial.ac.uk/openapi.json
+    status: 404
+  - url: https://www.imperial.ac.uk/business-school/icbs-apis/
+    status: 403
+  - url: https://profiles.imperial.ac.uk/server/api
+    status: 200
+  - url: https://data.imperial.ac.uk/
+    status: 0
+  - url: https://developer.imperial.ac.uk/
+    status: 0
+  - url: https://www.imperial.ac.uk/.well-known/security.txt
+    status: 404
+  - url: https://api.crossref.org/members?query=Imperial+College+London
+    status: 200
 apis:
-- aid: imperial-college-london:shibboleth
+- aid: imperial-college-london:shibboleth-idp
   name: Imperial Shibboleth Identity Provider (SAML 2.0)
+  x-operator: institution
+  x-operator-evidence: >-
+    shibboleth.imperial.ac.uk resolves to shibboleth.gslb21.ic.ac.uk -> 146.179.42.66, Imperial's
+    own load-balanced infrastructure — not a vendor CNAME. The metadata document is served from
+    that host and scopes itself to imperial.ac.uk.
   description: >-
-    Imperial's SAML 2.0 federated identity provider participates in the UK Access Management Federation.
-    It is a standards-based single sign-on integration interface rather than a REST API; access requires
-    federation membership.
+    Imperial's own Shibboleth IdP, and the one unambiguously institution-operated machine-readable
+    contract it publishes. The metadata document at /idp/shibboleth is a live 12.5KB SAML 2.0
+    EntityDescriptor with entityID https://shibboleth.imperial.ac.uk/shibboleth, one
+    IDPSSODescriptor and one AttributeAuthorityDescriptor, SSO and SLO endpoints for the SAML2
+    Redirect, POST and POST-SimpleSign bindings plus legacy Shibboleth SSO, SOAP
+    ArtifactResolution and AttributeQuery on :8443, and a `shibmd:Scope` of imperial.ac.uk. The
+    entityID is registered in the UK Access Management Federation aggregate. This is not a REST
+    API and is not self-service — consuming it means being a federation member — but it is a
+    published, versioned, machine-readable interface contract that Imperial itself operates.
   humanURL: https://www.imperial.ac.uk/admin-services/ict/
   tags:
   - Identity
+  - Identity Federation
   - SSO
   - SAML
   - Shibboleth
   properties:
+  - type: x-saml-metadata
+    url: https://shibboleth.imperial.ac.uk/idp/shibboleth
   - type: Documentation
     url: https://www.ukfederation.org.uk/
-- aid: imperial-college-london:imperial-college-london-core-api
-  name: Imperial College London Core API
-  description: Communities, collections, and items.
+  - type: Website
+    url: https://www.imperial.ac.uk/admin-services/ict/
+- aid: imperial-college-london:spiral-dspace-rest
+  name: Spiral Open Access Repository (DSpace 7 REST API)
+  x-operator: tenant
+  x-operator-evidence: >-
+    spiral.imperial.ac.uk is a CNAME to icl-repository.prod.4science.cloud. The software is
+    DSpace 7.6.1 with DSpace-CRIS 2023.02.05, operated by 4Science. Imperial owns the records,
+    the Handle prefix 10044, the DOIs (DataCite provider URKS) and the admin contact
+    spiral-prd@imperial.ac.uk. Same shape as scholarbank.nus.edu.sg CNAMEing to
+    openrepository.com. The three OpenAPIs below were derived from THIS instance — servers[] and
+    info.contact both name Spiral — so they are instance-specific rather than a shared vendor
+    document, but the engineering they describe is 4Science's, not Imperial's.
+  description: >-
+    Imperial's institutional open-access repository, exposed over the DSpace 7 HAL+JSON REST API
+    at https://spiral.imperial.ac.uk/server/api. The read-oriented subset is genuinely public:
+    /core/communities, /core/collections and /discover/search/objects all answer 200
+    unauthenticated. /core/items as a collection answers 401 — item access is by UUID. Collapsed
+    from three separate apis[] entries (core / discover / root) into one on 2026-08-19: those
+    were an artifact of refine-openapis splitting one contract by tag, and carrying them as three
+    surfaces tripled Imperial's apparent footprint for a single vendor-operated API.
   humanURL: https://spiral.imperial.ac.uk/
+  baseURL: https://spiral.imperial.ac.uk/server/api
   tags:
-  - Core
+  - Research Data
+  - Institutional Repository
+  - Open Access
+  - DSpace
   properties:
   - type: OpenAPI
     url: openapi/imperial-college-london-core-api-openapi.yml
-  - type: Documentation
-    url: https://www.re3data.org/repository/r3d100012406
-  - type: Website
-    url: https://spiral.imperial.ac.uk/
-  - type: x-json-schema
-    url: json-schema/imperial-college-london-item-schema.json
-  - type: x-json-structure
-    url: json-structure/imperial-college-london-item-structure.json
-  - type: x-examples
-    url: examples/imperial-college-london-searchObjects-example.json
-  - type: x-spectral-rules
-    url: rules/imperial-college-london-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/imperial-college-london-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/imperial-college-london-context.jsonld
-- aid: imperial-college-london:imperial-college-london-discover-api
-  name: Imperial College London Discover API
-  description: Search and browse over indexed objects.
-  humanURL: https://spiral.imperial.ac.uk/
-  tags:
-  - Discover
-  properties:
   - type: OpenAPI
     url: openapi/imperial-college-london-discover-api-openapi.yml
-  - type: Documentation
-    url: https://www.re3data.org/repository/r3d100012406
-  - type: Website
-    url: https://spiral.imperial.ac.uk/
-  - type: x-json-schema
-    url: json-schema/imperial-college-london-item-schema.json
-  - type: x-json-structure
-    url: json-structure/imperial-college-london-item-structure.json
-  - type: x-examples
-    url: examples/imperial-college-london-searchObjects-example.json
-  - type: x-spectral-rules
-    url: rules/imperial-college-london-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/imperial-college-london-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/imperial-college-london-context.jsonld
-- aid: imperial-college-london:imperial-college-london-root-api
-  name: Imperial College London Root API
-  description: API entry point and link index.
-  humanURL: https://spiral.imperial.ac.uk/
-  tags:
-  - Root
-  properties:
   - type: OpenAPI
     url: openapi/imperial-college-london-root-api-openapi.yml
   - type: Documentation
@@ -121,29 +196,140 @@ apis:
     url: https://spiral.imperial.ac.uk/
   - type: x-json-schema
     url: json-schema/imperial-college-london-item-schema.json
+  - type: x-json-schema
+    url: json-schema/imperial-college-london-community-schema.json
   - type: x-json-structure
     url: json-structure/imperial-college-london-item-structure.json
   - type: x-examples
     url: examples/imperial-college-london-searchObjects-example.json
+  - type: x-examples
+    url: examples/imperial-college-london-getCommunity-example.json
   - type: x-spectral-rules
     url: rules/imperial-college-london-rules.yml
   - type: x-vocabulary
     url: vocabulary/imperial-college-london-vocabulary.yml
   - type: x-json-ld-context
     url: json-ld/imperial-college-london-context.jsonld
+- aid: imperial-college-london:spiral-oai-pmh
+  name: Spiral OAI-PMH Metadata Harvesting Endpoint
+  x-operator: tenant
+  x-operator-evidence: >-
+    Served by the same 4Science-hosted DSpace-CRIS instance. Institution-identified, however:
+    the Identify response returns repositoryIdentifier spiral.imperial.ac.uk and adminEmail
+    spiral-prd@imperial.ac.uk, and every set is namespaced under Imperial's Handle prefix 10044.
+  description: >-
+    A fully functional OAI-PMH 2.0 harvesting interface — the standards-based way Imperial's
+    research outputs reach OpenAIRE, CORE, BASE and the rest of the aggregator layer. Identify,
+    ListMetadataFormats and ListSets all answer 200. Eleven metadata prefixes are served —
+    oai_dc, qdc, mods, mets, marc, dim, rdf, ore, didl, etdms and uketd_dc — of which etdms and
+    uketd_dc are the ETD and UK thesis profiles, evidence of a configured repository rather than
+    a default install. A second base URL at /server/oai/openairecris declares OpenAIRE CERIF
+    profile 1.1 compatibility. earliestDatestamp is 1916-01-01. No OpenAPI is saved for this
+    surface: the protocol is OAI's, the implementation is DSpace's and the hosting is 4Science's,
+    so authoring a contract here would credit Imperial with engineering it did not do.
+  humanURL: https://spiral.imperial.ac.uk/
+  baseURL: https://spiral.imperial.ac.uk/server/oai/request
+  tags:
+  - OAI-PMH
+  - Metadata Harvesting
+  - Open Access
+  - Research Data
+  properties:
+  - type: APIReference
+    url: https://spiral.imperial.ac.uk/server/oai/request?verb=Identify
+  - type: Documentation
+    url: https://www.openarchives.org/OAI/openarchivesprotocol.html
+  - type: Conformance
+    url: conformance/imperial-college-london-education-standards.yml
+- aid: imperial-college-london:canvas-lti-platform
+  name: Imperial Canvas LTI 1.3 / OIDC Platform Endpoints
+  x-operator: tenant
+  x-operator-evidence: >-
+    canvas.imperial.ac.uk is a CNAME to imperialcollegelondon-vanity.instructure.com. The
+    platform is Instructure Canvas. The keys, the tenancy and the launches are Imperial's; the
+    LTI implementation is Instructure's.
+  description: >-
+    Imperial's Canvas tenancy publishes the two documents an LTI 1.3 tool integrator actually
+    needs, unauthenticated, on Imperial's own hostname: an LTI platform JWKS at
+    /api/lti/security/jwks (200, 1,408 bytes of RSA public keys used to verify launch
+    id_tokens), and an OIDC discovery document at /.well-known/openid-configuration (200,
+    issuer https://canvas.imperial.ac.uk, RS256, authorization_code). The Canvas REST API itself
+    is present but gated — /api/v1/accounts/self answers 401 "user authorisation required". No
+    SCIM surface is exposed. This is the closest thing Imperial has to a documented,
+    standards-conformant integration point, and it is Instructure's work.
+  humanURL: https://canvas.imperial.ac.uk/
+  baseURL: https://canvas.imperial.ac.uk
+  tags:
+  - Learning Management
+  - LTI
+  - OIDC
+  - Education Technology
+  properties:
+  - type: x-jwks
+    url: https://canvas.imperial.ac.uk/api/lti/security/jwks
+  - type: x-openid-configuration
+    url: https://canvas.imperial.ac.uk/.well-known/openid-configuration
+  - type: Conformance
+    url: conformance/imperial-college-london-education-standards.yml
+- aid: imperial-college-london:blackboard-learn-rest
+  name: Imperial Blackboard Learn REST API
+  x-operator: tenant
+  x-operator-evidence: >-
+    bb.imperial.ac.uk is a CNAME to imperialcollege.blackboard.com. The platform is Blackboard
+    Learn, operated by Anthology.
+  description: >-
+    Imperial runs a second LMS alongside Canvas. Its Blackboard Learn REST API is reachable at
+    https://bb.imperial.ac.uk/learn/api/public/v1/; the version endpoint answers 200 without
+    authentication and reports Learn 4000.21.0 (rel.22+baf1ac0). Everything of substance —
+    /courses, /lti/domains — answers 401 "API request is not authenticated." Recorded because it
+    is a live, versioned, institution-hostnamed API surface, not because Imperial authored any
+    part of it.
+  humanURL: https://bb.imperial.ac.uk/
+  baseURL: https://bb.imperial.ac.uk/learn/api/public/v1
+  tags:
+  - Learning Management
+  - Education Technology
+  - Blackboard
+  properties:
+  - type: APIReference
+    url: https://bb.imperial.ac.uk/learn/api/public/v1/system/version
+  - type: Website
+    url: https://bb.imperial.ac.uk/
 common:
-  - type: AgenticAccess
-    url: agentic-access/imperial-college-london-agentic-access.yml
-  - type: DomainSecurity
-    url: security/imperial-college-london-domain-security.yml
   - type: Website
     url: https://www.imperial.ac.uk/
-  - type: GitHub
+  - type: LLMsTxt
+    url: https://www.imperial.ac.uk/llms.txt
+  - type: Blog
+    url: https://www.imperial.ac.uk/news/
+  - type: GitHubOrganization
     url: https://github.com/ImperialCollegeLondon
   - type: LinkedIn
     url: https://www.linkedin.com/school/imperial-college-london/
   - type: Twitter
     url: https://twitter.com/imperialcollege
+  - type: PrivacyPolicy
+    url: https://www.imperial.ac.uk/about-the-site/privacy/
+  - type: Support
+    url: https://servicemgt.imperial.ac.uk/ask
+  - type: IdentityFederation
+    url: https://shibboleth.imperial.ac.uk/idp/shibboleth
+  - type: ResearchRepository
+    url: https://spiral.imperial.ac.uk/
+  - type: LibraryCatalog
+    url: https://library-search.imperial.ac.uk/
+  - type: CourseCatalog
+    url: https://www.imperial.ac.uk/study/courses/
+  - type: ResearchComputing
+    url: https://www.imperial.ac.uk/computing/people/csg/services/hpc/
+  - type: AIPolicy
+    url: https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/
+  - type: Conformance
+    url: conformance/imperial-college-london-education-standards.yml
+  - type: AgenticAccess
+    url: agentic-access/imperial-college-london-agentic-access.yml
+  - type: DomainSecurity
+    url: security/imperial-college-london-domain-security.yml
   - type: Plans
     url: plans/imperial-college-london-plans-pricing.yml
   - type: RateLimits
