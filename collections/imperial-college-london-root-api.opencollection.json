@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spiral Open Access Repository (DSpace 7 REST API) Core Root API",
+    "version": "7.6.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/"
+          },
+          "docs": "Returns the HAL root document listing the DSpace version and the navigable `_links` to every API endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

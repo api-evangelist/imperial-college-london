@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spiral Open Access Repository (DSpace 7 REST API) Core API",
+    "version": "7.6.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Core",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List top-level and all communities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/core/communities",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size."
+              }
+            ]
+          },
+          "docs": "List top-level and all communities"
+        },
+        {
+          "info": {
+            "name": "Get a single community by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/core/communities/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single community by UUID"
+        },
+        {
+          "info": {
+            "name": "List collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/core/collections",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size."
+              }
+            ]
+          },
+          "docs": "List collections"
+        },
+        {
+          "info": {
+            "name": "Get a single collection by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/core/collections/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single collection by UUID"
+        },
+        {
+          "info": {
+            "name": "Get a single item by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/core/items/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single item by UUID"
+        },
+        {
+          "info": {
+            "name": "Find a DSpaceObject by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/dso/find",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Find a DSpaceObject by UUID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

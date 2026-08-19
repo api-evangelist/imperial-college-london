@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spiral Open Access Repository (DSpace 7 REST API) Core Discover API",
+    "version": "7.6.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discover",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search indexed objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spiral.imperial.ac.uk/server/api/discover/search/objects",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Lucene/Solr query string."
+              },
+              {
+                "name": "dsoType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Restrict the search to a community/collection UUID."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort spec, e.g. `dc.date.accessioned,DESC`."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size."
+              }
+            ]
+          },
+          "docs": "Full-text and faceted search over indexed DSpace objects. Restrict to a type with `dsoType` (e.g. `item`, `collection`, `community`)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

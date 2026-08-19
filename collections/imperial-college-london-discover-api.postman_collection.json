@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "6e224632-2230-4fc8-8d50-3012ab064ba0",
+      "name": "Discover",
+      "description": {
+        "content": "Search and browse over indexed objects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88c22b78-d631-44ba-981a-7816eae39155",
+          "name": "Search indexed objects",
+          "request": {
+            "name": "Search indexed objects",
+            "description": {
+              "content": "Full-text and faceted search over indexed DSpace objects. Restrict to a type with `dsoType` (e.g. `item`, `collection`, `community`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "discover",
+                "search",
+                "objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Lucene/Solr query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "dsoType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<uuid>",
+                  "description": "Restrict the search to a community/collection UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort spec, e.g. `dc.date.accessioned,DESC`."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33127694-1ea5-49b7-a6e1-7ec7b6adc388",
+              "name": "A discovery search result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discover",
+                    "search",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dsoType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"scope\": \"string\",\n  \"query\": \"string\",\n  \"sort\": {},\n  \"type\": \"discover\",\n  \"_links\": {},\n  \"_embedded\": {\n    \"searchResult\": {\n      \"_embedded\": {\n        \"objects\": [\n          {\n            \"hitHighlights\": {},\n            \"type\": \"discover\",\n            \"_embedded\": {\n              \"indexableObject\": {\n                \"inArchive\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"discoverable\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"withdrawn\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"lastModified\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"entityType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          {\n            \"hitHighlights\": {},\n            \"type\": \"discover\",\n            \"_embedded\": {\n              \"indexableObject\": {\n                \"inArchive\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"discoverable\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"withdrawn\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"lastModified\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"entityType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://spiral.imperial.ac.uk/server/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b99b3b65-76ed-4095-8e72-98f67df57ae5",
+    "name": "Spiral Open Access Repository (DSpace 7 REST API) Core Discover API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI description of the read-oriented, publicly accessible subset of the DSpace 7.6.1 REST API powering Imperial College London's Spiral open-access repository. The live API root reports `dspaceVersion: DSpace 7.6.1` and `crisVersion: cris-2023.02.05`. Responses are HAL+JSON (application/hal+json). DSpace does not ship a vendor OpenAPI document; this description was authored from the live HAL contract and real responses observed at https://spiral.imperial.ac.uk/server/api . Only anonymous, read-only endpoints verified against the running instance are included; write, workflow, and authenticated administration endpoints are omitted.\n\nContact Support:\n Name: Imperial College London - Spiral",
+      "type": "text/plain"
+    }
+  }
+}

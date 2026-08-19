@@ -1,0 +1,732 @@
+{
+  "item": [
+    {
+      "id": "e9123ddc-c556-46ca-95e1-7206c39361b8",
+      "name": "Core",
+      "description": {
+        "content": "Communities, collections, and items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b79c0ca2-c54f-4102-aada-7bf160999a08",
+          "name": "List top-level and all communities",
+          "request": {
+            "name": "List top-level and all communities",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "communities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74900144-6d29-4318-8970-800c0c513e35",
+              "name": "Paginated list of communities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"communities\": [\n      {\n        \"id\": \"75c0b7de-3565-c601-f905-de50b7f25761\",\n        \"uuid\": \"a9287a72-ed94-591b-ebb6-c5f6838feb01\",\n        \"name\": \"string\",\n        \"handle\": \"10044/1/489\",\n        \"metadata\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"type\": \"community\",\n        \"_links\": {},\n        \"archivedItemsCount\": 6785\n      },\n      {\n        \"id\": \"04337340-e3f4-ecf1-c43f-070879280fa2\",\n        \"uuid\": \"4b3d799d-cf5d-b97d-33c2-511f42f6bed6\",\n        \"name\": \"string\",\n        \"handle\": \"10044/1/489\",\n        \"metadata\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"type\": \"community\",\n        \"_links\": {},\n        \"archivedItemsCount\": 3777\n      }\n    ]\n  },\n  \"_links\": {},\n  \"page\": {\n    \"size\": 5648,\n    \"totalElements\": 3561,\n    \"totalPages\": 131,\n    \"number\": 793\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fad285e3-4ab7-4d8d-a053-458d482fcc5d",
+          "name": "Get a single community by UUID",
+          "request": {
+            "name": "Get a single community by UUID",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "communities",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b52b97ab-abe1-444a-9fb6-debb14f5c40e",
+              "name": "A community.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b231a813-b258-2e92-4102-6bad199bf45c\",\n  \"uuid\": \"d98b0d33-ef8b-7f48-8c9e-7cf7f2c2283a\",\n  \"name\": \"string\",\n  \"handle\": \"10044/1/489\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 4284,\n        \"place\": 3474\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 8809,\n        \"place\": 9490\n      }\n    ]\n  },\n  \"type\": \"community\",\n  \"_links\": {},\n  \"archivedItemsCount\": 3812\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5849de4b-08eb-4c29-b5f4-d9449429b573",
+              "name": "Object not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2013-08-20T03:12:35.194Z\",\n  \"status\": 1897,\n  \"message\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c2f879d-565d-4989-a1ee-7349406454e8",
+          "name": "List collections",
+          "request": {
+            "name": "List collections",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dacdd0ce-f080-4019-b1f2-51566a474e64",
+              "name": "Paginated list of collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {},\n  \"_links\": {},\n  \"page\": {\n    \"size\": 9399,\n    \"totalElements\": 3706,\n    \"totalPages\": 5569,\n    \"number\": 5710\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f354b2e-5391-4c11-90e0-8083828a38ac",
+          "name": "Get a single collection by UUID",
+          "request": {
+            "name": "Get a single collection by UUID",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "collections",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f524ee5-f090-4e03-a160-6e1bd36d0ec6",
+              "name": "A collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "collections",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c70fb877-a8bc-2306-056b-4e086141746d\",\n  \"uuid\": \"085c1a9e-728a-daeb-0d15-e4efbfc766fb\",\n  \"name\": \"string\",\n  \"handle\": \"10044/1/489\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 9489,\n        \"place\": 1362\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6712,\n        \"place\": 1543\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 5321,\n        \"place\": 5860\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 9566,\n        \"place\": 4490\n      }\n    ]\n  },\n  \"type\": \"collection\",\n  \"_links\": {},\n  \"archivedItemsCount\": 5867\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03194689-7995-4ee9-afca-ac6d99df1967",
+              "name": "Object not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "collections",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2013-08-20T03:12:35.194Z\",\n  \"status\": 1897,\n  \"message\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3fe7739-0667-410f-abd9-4a191308b311",
+          "name": "Get a single item by UUID",
+          "request": {
+            "name": "Get a single item by UUID",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "items",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eea0e672-e660-4ab2-9216-7bf75120a053",
+              "name": "An item (a deposited research output).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "items",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9a63a402-cfd0-c8cb-83e7-c27c3ef5687f\",\n  \"uuid\": \"34855c12-0b9a-a3a2-5cb3-10fd9b25eb5c\",\n  \"name\": \"string\",\n  \"handle\": \"10044/1/489\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1798,\n        \"place\": 3592\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 583,\n        \"place\": 978\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 7161,\n        \"place\": 9151\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1042,\n        \"place\": 8648\n      }\n    ],\n    \"key_2\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 2648,\n        \"place\": 6480\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 998,\n        \"place\": 558\n      }\n    ],\n    \"key_3\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6541,\n        \"place\": 7847\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 5929,\n        \"place\": 7980\n      }\n    ],\n    \"key_4\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6733,\n        \"place\": 6716\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1578,\n        \"place\": 7153\n      }\n    ]\n  },\n  \"type\": \"item\",\n  \"_links\": {},\n  \"inArchive\": true,\n  \"discoverable\": true,\n  \"withdrawn\": true,\n  \"lastModified\": \"2012-01-27T13:18:41.669Z\",\n  \"entityType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bb98d42-8d59-4fd4-8795-d782c0b8140f",
+              "name": "Object not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "items",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2013-08-20T03:12:35.194Z\",\n  \"status\": 1897,\n  \"message\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b7ec2a1-dbe9-4015-a7b0-bacad4faa599",
+          "name": "Find a DSpaceObject by UUID",
+          "request": {
+            "name": "Find a DSpaceObject by UUID",
+            "description": {},
+            "url": {
+              "path": [
+                "dso",
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a56ed05-2570-49f3-ac5b-ef4b22b20c6a",
+              "name": "The resolved DSpace object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dso",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9a63a402-cfd0-c8cb-83e7-c27c3ef5687f\",\n  \"uuid\": \"34855c12-0b9a-a3a2-5cb3-10fd9b25eb5c\",\n  \"name\": \"string\",\n  \"handle\": \"10044/1/489\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1798,\n        \"place\": 3592\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 583,\n        \"place\": 978\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 7161,\n        \"place\": 9151\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1042,\n        \"place\": 8648\n      }\n    ],\n    \"key_2\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 2648,\n        \"place\": 6480\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 998,\n        \"place\": 558\n      }\n    ],\n    \"key_3\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6541,\n        \"place\": 7847\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 5929,\n        \"place\": 7980\n      }\n    ],\n    \"key_4\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6733,\n        \"place\": 6716\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1578,\n        \"place\": 7153\n      }\n    ]\n  },\n  \"type\": \"item\",\n  \"_links\": {},\n  \"inArchive\": true,\n  \"discoverable\": true,\n  \"withdrawn\": true,\n  \"lastModified\": \"2012-01-27T13:18:41.669Z\",\n  \"entityType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee93d8d-dc5f-46a6-886a-f59a8266bcaf",
+              "name": "Object not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dso",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2013-08-20T03:12:35.194Z\",\n  \"status\": 1897,\n  \"message\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://spiral.imperial.ac.uk/server/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "46372ee6-f294-4f88-9e20-2d6fe111861d",
+    "name": "Spiral Open Access Repository (DSpace 7 REST API) Core API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI description of the read-oriented, publicly accessible subset of the DSpace 7.6.1 REST API powering Imperial College London's Spiral open-access repository. The live API root reports `dspaceVersion: DSpace 7.6.1` and `crisVersion: cris-2023.02.05`. Responses are HAL+JSON (application/hal+json). DSpace does not ship a vendor OpenAPI document; this description was authored from the live HAL contract and real responses observed at https://spiral.imperial.ac.uk/server/api . Only anonymous, read-only endpoints verified against the running instance are included; write, workflow, and authenticated administration endpoints are omitted.\n\nContact Support:\n Name: Imperial College London - Spiral",
+      "type": "text/plain"
+    }
+  }
+}
