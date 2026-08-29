@@ -308,6 +308,9 @@ apis:
   - type: Website
     url: https://bb.imperial.ac.uk/
 common:
+  - type: CapabilityMap
+    url: capabilities/imperial-college-london-capability-edges.yml
+    name: Imperial College London Business Capability Map
   - type: Website
     url: https://www.imperial.ac.uk/
   - type: LLMsTxt
