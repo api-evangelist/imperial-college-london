@@ -1,0 +1,161 @@
+# Education-regime domain-standard conformance — Imperial College London
+# Kin Score 0.12.0 `education` regime standards[]: scim, lti, oneroster, ed-fi, caliper,
+# qti, oai-pmh, shibboleth, saml, orcid, datacite, crossref.
+# REWARD-ONLY. Nothing here is a claim read off marketing copy — every `confirmed` row is a
+# live HTTP response captured on the date below, with the exact location that produced it.
+generated: '2026-08-19'
+method: probed
+source: live HTTP probes of imperial.ac.uk hosts + DataCite/Crossref/UK federation registries
+provider: Imperial College London
+providerId: imperial-college-london
+regime: education
+regime_label: Education & Research
+rubric_version: 0.12.0
+notes: >-
+  Operator matters more than presence here. Two of the four confirmed standards run on
+  infrastructure Imperial itself operates (the Shibboleth IdP, and Imperial's DataCite
+  consortium membership). The other two are standards implemented by vendor software running
+  under Imperial's DNS — 4Science-hosted DSpace-CRIS for OAI-PMH, Instructure Canvas for
+  LTI 1.3. The data and the identity are Imperial's; the conforming code is not.
+standards:
+- id: shibboleth
+  status: confirmed
+  x-operator: institution
+  evidence:
+    location: https://shibboleth.imperial.ac.uk/idp/shibboleth
+    status: 200
+    content_type: application/xml;charset=utf-8
+    bytes: 12549
+    detail: >-
+      Shibboleth IdP metadata document. Contains one IDPSSODescriptor and one
+      AttributeAuthorityDescriptor, and declares `<shibmd:Scope regexp="false">imperial.ac.uk`
+      twice — the Shibboleth-specific metadata extension, not generic SAML.
+    host_resolves_to: shibboleth.gslb21.ic.ac.uk -> 146.179.42.66 (Imperial-operated)
+- id: saml
+  status: confirmed
+  x-operator: institution
+  evidence:
+    location: https://shibboleth.imperial.ac.uk/idp/shibboleth
+    status: 200
+    detail: >-
+      entityID="https://shibboleth.imperial.ac.uk/shibboleth";
+      protocolSupportEnumeration includes urn:oasis:names:tc:SAML:2.0:protocol and
+      urn:oasis:names:tc:SAML:1.1:protocol. SSO endpoints published for SAML2 Redirect,
+      POST, POST-SimpleSign and Shibboleth SSO; SLO for all three bindings; SOAP
+      ArtifactResolution and AttributeQuery on :8443.
+  corroboration:
+    location: http://metadata.ukfederation.org.uk/ukfederation-metadata.xml
+    status: 200
+    bytes: 87663522
+    detail: >-
+      The UK Access Management Federation aggregate (11,113 entityID declarations) contains
+      entityID="https://shibboleth.imperial.ac.uk/shibboleth". Imperial is a registered
+      federation member, not merely a Shibboleth installation.
+- id: oai-pmh
+  status: confirmed
+  x-operator: tenant
+  evidence:
+    location: https://spiral.imperial.ac.uk/server/oai/request?verb=Identify
+    status: 200
+    content_type: text/xml;charset=UTF-8
+    detail: >-
+      OAI-PMH 2.0. repositoryName "Spiral"; baseURL https://spiral.imperial.ac.uk/server/oai/request;
+      repositoryIdentifier spiral.imperial.ac.uk; adminEmail spiral-prd@imperial.ac.uk;
+      earliestDatestamp 1916-01-01; granularity YYYY-MM-DDThh:mm:ssZ.
+      Declares OpenAIRE CERIF profile 1.1 compatibility with a second base URL at
+      /server/oai/openairecris (verb=Identify -> 200).
+  supporting:
+  - location: https://spiral.imperial.ac.uk/server/oai/request?verb=ListMetadataFormats
+    status: 200
+    detail: >-
+      Eleven metadata prefixes served: oai_dc, qdc, mods, mets, marc, dim, rdf, ore, didl,
+      etdms, uketd_dc. uketd_dc and etdms are the UK/ETD thesis profiles — this is a
+      configured repository, not a default install.
+  - location: https://spiral.imperial.ac.uk/server/oai/request?verb=ListSets
+    status: 200
+    detail: 'Sets published under Imperial''s Handle prefix, e.g. setSpec com_10044_1_489.'
+  operator_note: >-
+    spiral.imperial.ac.uk is a CNAME to icl-repository.prod.4science.cloud. The OAI-PMH
+    implementation is DSpace 7.6.1 / DSpace-CRIS 2023.02.05 operated by 4Science on Imperial's
+    behalf. The records, the Handle prefix (10044) and the admin contact are Imperial's.
+- id: datacite
+  status: confirmed
+  x-operator: institution
+  evidence:
+    location: https://api.datacite.org/providers/urks
+    status: 200
+    detail: >-
+      DataCite provider record: name "Imperial College London", symbol URKS,
+      memberType consortium_organization, created 2020-09-01, website https://www.imperial.ac.uk/.
+      Institutional DOI registration authority, held in Imperial's own name.
+- id: lti
+  status: confirmed
+  x-operator: tenant
+  evidence:
+    location: https://canvas.imperial.ac.uk/api/lti/security/jwks
+    status: 200
+    content_type: application/json; charset=utf-8
+    bytes: 1408
+    detail: >-
+      LTI 1.3 platform JWKS served on Imperial's own hostname — the RSA public keys an LTI
+      tool uses to verify launch id_tokens issued by Imperial's Canvas instance.
+  supporting:
+  - location: https://canvas.imperial.ac.uk/.well-known/openid-configuration
+    status: 200
+    detail: >-
+      OIDC discovery document, issuer "https://canvas.imperial.ac.uk", jwks_uri
+      https://canvas.imperial.ac.uk/login/oauth2/jwks, authorization_code grant, RS256.
+      This is the LTI 1.3 / OIDC third-party-initiated-login side of the same platform.
+  operator_note: >-
+    canvas.imperial.ac.uk is a CNAME to imperialcollegelondon-vanity.instructure.com.
+    The LTI conformance is Instructure's; the tenancy, the keys and the launches are Imperial's.
+- id: orcid
+  status: unverified
+  x-operator: tenant
+  evidence:
+    location: https://spiral.imperial.ac.uk/server/api
+    status: 200
+    detail: >-
+      The DSpace-CRIS HAL root advertises `orcidhistories` and `orcidqueues` link relations,
+      so the ORCID module is compiled in. Both are authentication-gated
+      (/server/api/cris/orcid/orcidqueue -> 404, /server/api/core/items -> 401), so whether
+      Imperial has an ORCID member integration CONFIGURED cannot be established from outside.
+      Recorded as a software capability, NOT credited as conformance.
+- id: crossref
+  status: not_found
+  evidence:
+    location: https://api.crossref.org/members?query=Imperial+College+London
+    status: 200
+    detail: No Crossref member record returned for Imperial College London.
+- id: scim
+  status: not_found
+  evidence:
+    location: https://canvas.imperial.ac.uk/api/lti/accounts/self/scim/v2/Users
+    status: 404
+    detail: >-
+      No SCIM surface exposed on the Canvas tenancy. Institutional provisioning at Imperial
+      runs behind federated identity and is not externally probeable.
+- id: oneroster
+  status: not_probeable
+  reason: >-
+    OneRoster rostering runs between the SIS and the LMS behind institutional authentication;
+    no unauthenticated surface exists to probe.
+- id: ed-fi
+  status: not_probeable
+  reason: Ed-Fi is a US K-12/state-agency data standard with no applicability to a UK university.
+- id: caliper
+  status: not_probeable
+  reason: >-
+    Caliper analytics endpoints are configured per-tenant inside the LMS and are not exposed
+    unauthenticated on either canvas.imperial.ac.uk or bb.imperial.ac.uk.
+- id: qti
+  status: not_probeable
+  reason: >-
+    QTI assessment packages are exchanged inside the LMS; no public interchange surface.
+summary:
+  confirmed: 5
+  confirmed_institution_operated: 3
+  confirmed_tenant_operated: 2
+  unverified: 1
+  not_found: 2
+  not_probeable: 4
