@@ -1,19 +1,23 @@
 {
+  "x-provenance": {
+    "generated": "2026-08-19",
+    "method": "derived",
+    "source": "live probe of https://spiral.imperial.ac.uk/server/api (DSpace 7.6.1 / DSpace-CRIS 2023.02.05)",
+    "x-operator": "tenant",
+    "x-operator-note": "Derived from / probed against the 4Science-hosted Spiral DSpace-CRIS instance. The data is Imperial College London’s; the platform and contract are not."
+  },
   "@context": {
     "@version": 1.1,
     "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "spiral": "https://spiral.imperial.ac.uk/server/api/",
     "@vocab": "https://spiral.imperial.ac.uk/ns/",
-
     "Organization": "schema:CollegeOrUniversity",
     "name": "schema:name",
     "url": "schema:url",
-
     "Community": "spiral:core/communities",
     "Collection": "spiral:core/collections",
     "Item": "schema:CreativeWork",
-
     "uuid": "schema:identifier",
     "handle": "dcterms:identifier",
     "title": "dcterms:title",
@@ -22,7 +26,6 @@
     "spatial": "dcterms:spatial",
     "lastModified": "dcterms:modified",
     "metadata": "@nest",
-
     "dc.title": "dcterms:title",
     "dc.contributor.author": "dcterms:creator",
     "dc.description.abstract": "dcterms:abstract",

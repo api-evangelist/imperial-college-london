@@ -1,3 +1,13 @@
+x-operator: tenant
+x-operator-evidence: >-
+  spiral.imperial.ac.uk is under Imperial's own registrable domain but is a CNAME to
+  icl-repository.prod.4science.cloud. The platform is DSpace 7.6.1 / DSpace-CRIS 2023.02.05
+  operated by 4Science; the records, the Handle prefix (10044), the OAI adminEmail
+  (spiral-prd@imperial.ac.uk) and the DOIs are Imperial's. Same shape as
+  scholarbank.nus.edu.sg CNAMEing to openrepository.com. This contract was derived from
+  THIS instance (servers[] and info.contact both name Spiral), so it is instance-specific
+  and not a shared vendor document — but the engineering behind it is not Imperial's.
+x-operator-verified: '2026-08-19'
 openapi: 3.0.3
 info:
   title: Spiral Open Access Repository (DSpace 7 REST API)

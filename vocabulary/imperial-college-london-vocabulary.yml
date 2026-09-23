@@ -1,3 +1,12 @@
+# Provenance — API Evangelist university pipeline, 2026-08-19.
+generated: '2026-08-19'
+method: derived
+source: live probe of https://spiral.imperial.ac.uk/server/api (DSpace 7.6.1 / DSpace-CRIS 2023.02.05)
+x-operator: tenant
+x-operator-note: >-
+  Derived from the Spiral DSpace-CRIS contract. Per the university pipeline's inheritance rule,
+  everything derived from a tenant-operated contract inherits that operator: the platform is
+  4Science-hosted DSpace, the data is Imperial's.
 vocabulary:
   name: Imperial College London Spiral DSpace Vocabulary
   description: >-

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Spiral Open Access Repository (DSpace 7 REST API) Core Root API
-  description: 'OpenAPI description of the read-oriented, publicly accessible subset of the DSpace 7.6.1 REST API powering Imperial College London''s Spiral open-access repository. The live API root reports `dspaceVersion: DSpace 7.6.1` and `crisVersion: cris-2023.02.05`. Responses are HAL+JSON (application/hal+json). DSpace does not ship a vendor OpenAPI document; this description was authored from the live HAL contract and real responses observed at https://spiral.imperial.ac.uk/server/api . Only anonymous, read-only endpoints verified against the running instance are included; write, workflow, and authenticated administration endpoints are omitted.'
+  title: Spiral Open Access Repository (DSpace 7 REST API) Root API
+  description: OpenAPI description of the read-oriented, publicly accessible subset of the DSpace 7.6.1 REST API powering Imperial College London's Spiral open-access repository.
   version: 7.6.1
   contact:
     name: Imperial College London - Spiral
@@ -54,3 +54,6 @@ components:
           example: root
         _links:
           type: object
+x-operator: tenant
+x-operator-evidence: spiral.imperial.ac.uk is under Imperial's own registrable domain but is a CNAME to icl-repository.prod.4science.cloud. The platform is DSpace 7.6.1 / DSpace-CRIS 2023.02.05 operated by 4Science; the records, the Handle prefix (10044), the OAI adminEmail (spiral-prd@imperial.ac.uk) and the DOIs are Imperial's. Same shape as scholarbank.nus.edu.sg CNAMEing to openrepository.com. This contract was derived from THIS instance (servers[] and info.contact both name Spiral), so it is instance-specific and not a shared vendor document — but the engineering behind it is not Imperial's.
+x-operator-verified: '2026-08-19'

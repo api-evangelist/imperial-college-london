@@ -1,20 +1,51 @@
 {
+  "x-provenance": {
+    "generated": "2026-08-19",
+    "method": "derived",
+    "source": "live probe of https://spiral.imperial.ac.uk/server/api (DSpace 7.6.1 / DSpace-CRIS 2023.02.05)",
+    "x-operator": "tenant",
+    "x-operator-note": "Derived from / probed against the 4Science-hosted Spiral DSpace-CRIS instance. The data is Imperial College London’s; the platform and contract are not."
+  },
   "$schema": "https://json-structure.org/meta/core/v0/#",
   "$id": "https://raw.githubusercontent.com/api-evangelist/imperial-college-london/main/json-structure/imperial-college-london-item-structure.json",
   "name": "SpiralItem",
   "description": "JSON Structure for a Spiral (DSpace 7.6.1) repository item.",
   "type": "object",
   "properties": {
-    "id": { "type": "string" },
-    "uuid": { "type": "string" },
-    "name": { "type": "string" },
-    "handle": { "type": "string" },
-    "inArchive": { "type": "boolean" },
-    "discoverable": { "type": "boolean" },
-    "withdrawn": { "type": "boolean" },
-    "lastModified": { "type": "string", "format": "date-time" },
-    "entityType": { "type": ["string", "null"] },
-    "type": { "type": "string" },
+    "id": {
+      "type": "string"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "handle": {
+      "type": "string"
+    },
+    "inArchive": {
+      "type": "boolean"
+    },
+    "discoverable": {
+      "type": "boolean"
+    },
+    "withdrawn": {
+      "type": "boolean"
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entityType": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": "string"
+    },
     "metadata": {
       "type": "map",
       "values": {
@@ -23,16 +54,38 @@
           "type": "object",
           "name": "MetadataValue",
           "properties": {
-            "value": { "type": "string" },
-            "language": { "type": ["string", "null"] },
-            "authority": { "type": ["string", "null"] },
-            "confidence": { "type": "int32" },
-            "place": { "type": "int32" }
+            "value": {
+              "type": "string"
+            },
+            "language": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "authority": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "confidence": {
+              "type": "int32"
+            },
+            "place": {
+              "type": "int32"
+            }
           },
-          "required": ["value"]
+          "required": [
+            "value"
+          ]
         }
       }
     }
   },
-  "required": ["uuid", "type", "metadata"]
+  "required": [
+    "uuid",
+    "type",
+    "metadata"
+  ]
 }
