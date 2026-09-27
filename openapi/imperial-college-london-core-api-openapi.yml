@@ -123,18 +123,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    CommunityPage:
-      allOf:
-      - $ref: '#/components/schemas/HalPage'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              communities:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Community'
     Collection:
       allOf:
       - $ref: '#/components/schemas/DSpaceObject'
@@ -166,17 +154,26 @@ components:
           type:
             type: string
             example: item
-    PageInfo:
+    DSpaceObject:
       type: object
       properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
+        id:
+          type: string
+          format: uuid
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        handle:
+          type: string
+          example: 10044/1/489
+        metadata:
+          $ref: '#/components/schemas/MetadataMap'
+        type:
+          type: string
+        _links:
+          type: object
     MetadataMap:
       type: object
       description: Map of Dublin Core / DSpace metadata field keys (e.g. `dc.title`, `dc.contributor.author`) to arrays of metadata values.
@@ -214,26 +211,18 @@ components:
           type:
             type: string
             example: community
-    DSpaceObject:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        handle:
-          type: string
-          example: 10044/1/489
-        metadata:
-          $ref: '#/components/schemas/MetadataMap'
-        type:
-          type: string
-        _links:
-          type: object
+    CommunityPage:
+      allOf:
+      - $ref: '#/components/schemas/HalPage'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              communities:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Community'
     HalPage:
       type: object
       properties:
@@ -243,23 +232,18 @@ components:
           type: object
         page:
           $ref: '#/components/schemas/PageInfo'
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
   parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    Page:
-      name: page
-      in: query
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-      description: Zero-based page index.
     Size:
       name: size
       in: query
@@ -270,6 +254,22 @@ components:
         maximum: 100
         default: 20
       description: Page size.
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      description: Zero-based page index.
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   responses:
     NotFound:
       description: Object not found.
