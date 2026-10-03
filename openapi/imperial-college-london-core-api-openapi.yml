@@ -123,16 +123,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Collection:
-      allOf:
-      - $ref: '#/components/schemas/DSpaceObject'
-      - type: object
-        properties:
-          archivedItemsCount:
-            type: integer
-          type:
-            type: string
-            example: collection
     Item:
       allOf:
       - $ref: '#/components/schemas/DSpaceObject'
@@ -154,6 +144,48 @@ components:
           type:
             type: string
             example: item
+    CommunityPage:
+      allOf:
+      - $ref: '#/components/schemas/HalPage'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              communities:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Community'
+    Community:
+      allOf:
+      - $ref: '#/components/schemas/DSpaceObject'
+      - type: object
+        properties:
+          archivedItemsCount:
+            type: integer
+          type:
+            type: string
+            example: community
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
+    HalPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+        _links:
+          type: object
+        page:
+          $ref: '#/components/schemas/PageInfo'
     DSpaceObject:
       type: object
       properties:
@@ -201,7 +233,7 @@ components:
           type: integer
       required:
       - value
-    Community:
+    Collection:
       allOf:
       - $ref: '#/components/schemas/DSpaceObject'
       - type: object
@@ -210,40 +242,24 @@ components:
             type: integer
           type:
             type: string
-            example: community
-    CommunityPage:
-      allOf:
-      - $ref: '#/components/schemas/HalPage'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              communities:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Community'
-    HalPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-        _links:
-          type: object
-        page:
-          $ref: '#/components/schemas/PageInfo'
-    PageInfo:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
+            example: collection
   parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      description: Zero-based page index.
     Size:
       name: size
       in: query
@@ -254,22 +270,6 @@ components:
         maximum: 100
         default: 20
       description: Page size.
-    Page:
-      name: page
-      in: query
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-      description: Zero-based page index.
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   responses:
     NotFound:
       description: Object not found.
