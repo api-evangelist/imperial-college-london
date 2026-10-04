@@ -123,27 +123,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Item:
-      allOf:
-      - $ref: '#/components/schemas/DSpaceObject'
-      - type: object
-        properties:
-          inArchive:
-            type: boolean
-          discoverable:
-            type: boolean
-          withdrawn:
-            type: boolean
-          lastModified:
-            type: string
-            format: date-time
-          entityType:
-            type:
-            - string
-            - 'null'
-          type:
-            type: string
-            example: item
     CommunityPage:
       allOf:
       - $ref: '#/components/schemas/HalPage'
@@ -156,36 +135,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Community'
-    Community:
-      allOf:
-      - $ref: '#/components/schemas/DSpaceObject'
-      - type: object
-        properties:
-          archivedItemsCount:
-            type: integer
-          type:
-            type: string
-            example: community
-    PageInfo:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
-    HalPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-        _links:
-          type: object
-        page:
-          $ref: '#/components/schemas/PageInfo'
     DSpaceObject:
       type: object
       properties:
@@ -213,6 +162,27 @@ components:
         type: array
         items:
           $ref: '#/components/schemas/MetadataValue'
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
+    Collection:
+      allOf:
+      - $ref: '#/components/schemas/DSpaceObject'
+      - type: object
+        properties:
+          archivedItemsCount:
+            type: integer
+          type:
+            type: string
+            example: collection
     MetadataValue:
       type: object
       description: A single metadata field value in DSpace's metadata model.
@@ -233,7 +203,7 @@ components:
           type: integer
       required:
       - value
-    Collection:
+    Community:
       allOf:
       - $ref: '#/components/schemas/DSpaceObject'
       - type: object
@@ -242,15 +212,38 @@ components:
             type: integer
           type:
             type: string
-            example: collection
+            example: community
+    Item:
+      allOf:
+      - $ref: '#/components/schemas/DSpaceObject'
+      - type: object
+        properties:
+          inArchive:
+            type: boolean
+          discoverable:
+            type: boolean
+          withdrawn:
+            type: boolean
+          lastModified:
+            type: string
+            format: date-time
+          entityType:
+            type:
+            - string
+            - 'null'
+          type:
+            type: string
+            example: item
+    HalPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+        _links:
+          type: object
+        page:
+          $ref: '#/components/schemas/PageInfo'
   parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
     Page:
       name: page
       in: query
@@ -260,6 +253,13 @@ components:
         minimum: 0
         default: 0
       description: Zero-based page index.
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     Size:
       name: size
       in: query

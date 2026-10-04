@@ -63,27 +63,26 @@ paths:
                 $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    Item:
-      allOf:
-      - $ref: '#/components/schemas/DSpaceObject'
-      - type: object
-        properties:
-          inArchive:
-            type: boolean
-          discoverable:
-            type: boolean
-          withdrawn:
-            type: boolean
-          lastModified:
-            type: string
-            format: date-time
-          entityType:
-            type:
-            - string
-            - 'null'
-          type:
-            type: string
-            example: item
+    DSpaceObject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        handle:
+          type: string
+          example: 10044/1/489
+        metadata:
+          $ref: '#/components/schemas/MetadataMap'
+        type:
+          type: string
+        _links:
+          type: object
     SearchResult:
       type: object
       properties:
@@ -140,26 +139,6 @@ components:
                             properties:
                               indexableObject:
                                 $ref: '#/components/schemas/Item'
-    DSpaceObject:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        handle:
-          type: string
-          example: 10044/1/489
-        metadata:
-          $ref: '#/components/schemas/MetadataMap'
-        type:
-          type: string
-        _links:
-          type: object
     MetadataMap:
       type: object
       description: Map of Dublin Core / DSpace metadata field keys (e.g. `dc.title`, `dc.contributor.author`) to arrays of metadata values.
@@ -187,6 +166,27 @@ components:
           type: integer
       required:
       - value
+    Item:
+      allOf:
+      - $ref: '#/components/schemas/DSpaceObject'
+      - type: object
+        properties:
+          inArchive:
+            type: boolean
+          discoverable:
+            type: boolean
+          withdrawn:
+            type: boolean
+          lastModified:
+            type: string
+            format: date-time
+          entityType:
+            type:
+            - string
+            - 'null'
+          type:
+            type: string
+            example: item
   parameters:
     Page:
       name: page
