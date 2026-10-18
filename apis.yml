@@ -59,6 +59,19 @@ tags:
   - Institutional Repository
   - Open Access
   - Identity Federation
+  - LMS
+  - Library
+tags_raw:
+  - University
+  - Higher Education
+  - Education
+  - Russell Group
+  - United Kingdom
+  - London
+  - Research
+  - Institutional Repository
+  - Open Access
+  - Identity Federation
   - Learning Management
   - Library
 created: '2026-06-03'
@@ -272,6 +285,11 @@ apis:
   humanURL: https://canvas.imperial.ac.uk/
   baseURL: https://canvas.imperial.ac.uk
   tags:
+  - LMS
+  - LTI
+  - OpenID Connect
+  - Education Technology
+  tags_raw:
   - Learning Management
   - LTI
   - OIDC
@@ -299,6 +317,10 @@ apis:
   humanURL: https://bb.imperial.ac.uk/
   baseURL: https://bb.imperial.ac.uk/learn/api/public/v1
   tags:
+  - LMS
+  - Education Technology
+  - Blackboard
+  tags_raw:
   - Learning Management
   - Education Technology
   - Blackboard
